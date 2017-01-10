@@ -25,6 +25,13 @@ h1, h2, h3, h4 {
     font-family: 'Lobster', cursive;
 }
 
+.btn {
+	float: right;
+	position: relative;
+	top: -3px;
+	margin-left: 10px;
+}
+
 .date {
     float: right;
     color: #828282;
