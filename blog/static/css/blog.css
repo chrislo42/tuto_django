@@ -30,6 +30,7 @@ h1, h2, h3, h4 {
 	position: relative;
 	top: -3px;
 	margin-left: 10px;
+	height: 33px;
 }
 
 .date {
