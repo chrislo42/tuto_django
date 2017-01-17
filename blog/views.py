@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from .models import Post, Comment
-from .forms import PostForm, CommentForm
+from .forms import PostForm, NewForm, CommentForm
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -17,7 +17,7 @@ def post_detail(request, pk, slug):
 @login_required
 def post_new(request):
     if request.method == "POST":
-        form = PostForm(request.POST)
+        form = NewForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
@@ -25,7 +25,7 @@ def post_new(request):
             post.save()
             return redirect('post_detail', pk=post.pk, slug=post.slug)
     else:
-        form = PostForm()
+        form = NewForm()
     return render(request, 'blog/post_edit.html', {'form': form})
 
 @login_required

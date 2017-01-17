@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h2><a href="{% url 'miniurl_edit' %}">Raccourcir une Url</a></h2>
+    <h3>Liste des URLs raccourcies :</h3>
+    <ul>
+        {% for miniurl in miniurls %}
+            <li>
+                {{ miniurl.longUrl }} via
+                <a href="{% url 'miniurl_redir' code=miniurl.code %}">{{ request.get_host }}/{{ miniurl.code }}</a>
+                {% if miniurl.pseudo != "" %}
+                    par {{ miniurl.pseudo }}
+                {% endif %}
+                ( {{ miniurl.access }} accès)
+            </li>
+        {% empty %}
+            <li>Il n'y en a pas actuellement.</li>
+        {% endfor %}
+    </ul>
+{% endblock content %}
