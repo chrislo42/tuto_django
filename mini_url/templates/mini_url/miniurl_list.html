@@ -6,7 +6,9 @@
     <ul>
         {% for miniurl in miniurls %}
             <li>
-                {{ miniurl.longUrl }} via
+                <a href="{% url "url_update" pk=miniurl.pk %}">Mettre à jour</a> -
+                <a href="{% url "url_delete" pk=miniurl.pk %}">Supprimer</a>
+                | {{ miniurl.longUrl }} via
                 <a href="{% url 'miniurl_redir' code=miniurl.code %}">{{ request.get_host }}/{{ miniurl.code }}</a>
                 {% if miniurl.pseudo != "" %}
                     par {{ miniurl.pseudo }}
