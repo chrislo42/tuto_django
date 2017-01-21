@@ -11,5 +11,18 @@
             <a href="{% url 'post_detail' pk=post.pk slug=post.slug %}">Comments: {{ post.approved_comments.count }}</a>
             <p class="categ">Catégorie : {{ post.category }}</p>
         </div>
+    {% empty %}
+        <li>Il n'y en a pas actuellement.</li>
     {% endfor %}
+    <div class="pagination">
+        {% if posts.has_previous %}
+            <a href="{% url 'post_list' %}?page={{ posts.previous_page_number }} ">Précédente</a> -
+        {% endif %}
+
+        <span class="current">Page {{ posts.number }} sur {{ posts.paginator.num_pages }}</span>
+        {% if posts.has_next %}
+            - <a href="{% url 'post_list' %}?page={{ posts.next_page_number }} ">Suivante</a>
+        {% endif %}
+    </div>
+
 {% endblock content %}

@@ -4,12 +4,19 @@ from .forms import MiniURLForm
 from django.contrib.auth.decorators import login_required
 from django.views.generic import UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
+from django.core.paginator import Paginator, EmptyPage
 
 # Create your views here.
 
-def miniurl_list(request):
+def miniurl_list(request, page=1):
     miniurls = MiniURL.objects.order_by('-access')
-    return render(request, 'mini_url/miniurl_list.html', {'miniurls':miniurls})
+    paginator = Paginator(miniurls, 5) #5 liens par page
+    try:
+        minis = paginator.page(page)
+    except EmptyPage:
+        minis = paginator.page(paginator.num_pages)
+
+    return render(request, 'mini_url/miniurl_list.html', {'miniurls':minis})
 
 @login_required
 def miniurl_edit(request):
