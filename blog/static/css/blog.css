@@ -69,3 +69,8 @@ h1, h2, h3, h4 {
 	float: right;
     color: #828282;
 }
+
+.right {
+    border: 1px solid black;
+    border-radius: 20px;
+}

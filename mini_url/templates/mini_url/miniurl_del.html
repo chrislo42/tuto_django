@@ -6,7 +6,8 @@
     <p>{{ mini_url.code }} -&gt; {{ mini_url.url }} (créée le {{ mini_url.created_date|date:"DATE_FORMAT" }})</p>
 
     <form method="post" action="">
-       {% csrf_token %}  <!-- Nous prenons bien soin d'ajouter le csrf_token -->
-       <input type="submit" value="Oui, supprime moi ça" /> - <a href="{% url "miniurl_list" %}">Pas trop chaud en fait</a>
+        {% csrf_token %}  <!-- Nous prenons bien soin d'ajouter le csrf_token -->
+        <input class='save btn btn-default' type="submit" value="Supprimer" />
+        <a href="{% url "miniurl_list" %}"><input class='save btn btn-default' type="button" value="Annuler"></a>
     </form>
 {% endblock %}
