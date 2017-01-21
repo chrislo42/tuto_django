@@ -7,7 +7,7 @@
         {% for miniurl in miniurls %}
             <li>
                 <a href="{% url "url_update" pk=miniurl.pk %}"><span class="glyphicon glyphicon-edit"></span></a> -
-                <a href="{% url "url_delete" pk=miniurl.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+                <a href="{% url "url_delete" pk=miniurl.pk %}"><span class="glyphicon glyphicon-trash"></span></a>
                 | {{ miniurl.longUrl }} via
                 <a href="{% url 'miniurl_redir' code=miniurl.code %}">{{ request.get_host }}/{{ miniurl.code }}</a>
                 {% if miniurl.pseudo != "" %}
