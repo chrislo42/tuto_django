@@ -2,6 +2,7 @@ from django.conf.urls import include, url
 from . import views
 from django.conf import settings
 
+
 urlpatterns = [
     url(r'^$', views.post_list, name='post_list'),
     url(r'^drafts/$', views.post_draft_list, name='post_draft_list'),
@@ -15,6 +16,12 @@ urlpatterns = [
     url(r'^comment/(?P<pk>\d+)/remove/$', views.comment_remove, name='comment_remove'),
 ]
 
+from django.contrib.flatpages import views
+
+urlpatterns += [
+    url(r'^contact/', views.flatpage, {'url': '/contact/'}, name='contact'),
+    url(r'^about/', views.flatpage, {'url': '/about/'}, name='a_propos'),
+]
 if settings.DEBUG:
     import debug_toolbar
 
