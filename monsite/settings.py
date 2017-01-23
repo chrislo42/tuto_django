@@ -53,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'django.middleware.common.BrokenLinkEmailsMiddleware',
 ]
 
 ROOT_URLCONF = 'monsite.urls'
@@ -105,6 +106,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+ADMINS = (
+    ('chris', 'chris42.lopez@gmail.com'),
+)
+MANAGERS = ADMINS
+SEND_BROKEN_LINK_EMAILS = True
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
